@@ -41,7 +41,7 @@ public:
     std::cout << "Bucket size = " << b_size.bucketSize << '\n';
   }
 
-  void getNeighbors(double radius)
+  void getNeighbors(double radius, uint32_t start, uint32_t end)
   {
     std::vector<uint32_t> results;
 
@@ -50,7 +50,7 @@ public:
 
     std::cout << points.size() << " points in tree." << std::endl;
 
-    for (uint32_t i = 0; i < points.size(); ++i)
+    for (auto i = start; i < end; ++i)
     {
 
       if (i % (one_percent) == 0)

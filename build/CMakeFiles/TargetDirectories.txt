@@ -1,0 +1,3 @@
+/home/donald/Documents/cc_dk/build/CMakeFiles/MyLibNN.dir
+/home/donald/Documents/cc_dk/build/CMakeFiles/edit_cache.dir
+/home/donald/Documents/cc_dk/build/CMakeFiles/rebuild_cache.dir

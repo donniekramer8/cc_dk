@@ -1,0 +1,1 @@
+/usr/bin/c++ -fPIC -Wall -Wextra -fPIC -O3 -DNDEBUG -flto -shared  -o MyLibNN.cpython-310-x86_64-linux-gnu.so CMakeFiles/MyLibNN.dir/pywrap.cpp.o 

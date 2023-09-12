@@ -3,8 +3,8 @@ from sklearn.neighbors import KDTree
 import h5py
 import pickle
 import time
-import os
 import math
+import threading
 from MyLibNN import Tree
 
 
@@ -73,7 +73,33 @@ radius = 30
 
 print("starting nn_search")
 
-cpp_tree.getNeighbors(radius)
+n_threads = 4
+break0 = 0
+break1 = math.floor(rows/n_threads)
+break2 = math.floor(2*rows/n_threads)
+break3 = math.floor(3*rows/n_threads)
+end = rows
+
+def get_neighbors_thread(radius, start, end):
+    cpp_tree.getNeighbors(radius, start, end)
+
+get_neighbors_thread(radius, break0, break1)
+
+t1 = threading.Thread(target=get_neighbors_thread, args=(radius, break0, break1))
+t2 = threading.Thread(target=get_neighbors_thread, args=(radius, break1, break2))
+t3 = threading.Thread(target=get_neighbors_thread, args=(radius, break2, break3))
+t4 = threading.Thread(target=get_neighbors_thread, args=(radius, break3, end))
+
+t1.start()
+t2.start()
+t3.start()
+t4.start()
+print("started all threads")
+
+t1.join()
+t2.join()
+t3.join()
+t4.join()
 
 print('Done')
 print('Writing pickle file...')
