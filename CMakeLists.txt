@@ -4,7 +4,7 @@ project(MyLibNN)
 
 set(CMAKE_CXX_STANDARD 20)
 set(PYBIND11_PYTHON_VERSION 3.6)
-set(CMAKE_CXX_FLAGS "-Wall -Wextra -fPIC")
+set(CMAKE_CXX_FLAGS "-Wall -fPIC")
 
 find_package(pybind11 REQUIRED)
 
@@ -48,6 +48,6 @@ IF(GTEST_FOUND)
 	ENABLE_TESTING()
 	INCLUDE_DIRECTORIES(${GTEST_INCLUDE_DIRS})
 	# ADD_EXECUTABLE(octree-test test/octree-test.cpp)
-	TARGET_LINK_LIBRARIES(octree-test ${GTEST_MAIN_LIBRARIES})
+	# TARGET_LINK_LIBRARIES(octree-test ${GTEST_MAIN_LIBRARIES})
 	ADD_TEST(octree-test octree-test)
 ENDIF()
